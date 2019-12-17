@@ -12,8 +12,9 @@ import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+	
     @Autowired
-    private OAuth2UserService<OidcUserRequest, OidcUser> oidcUserService;
+    private OAuth2UserService <OidcUserRequest, OidcUser> oidcUserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

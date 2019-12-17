@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
    @Autowired
-   @PreAuthorize("hasRole('Users')")
+   //@PreAuthorize("hasRole('Users')")
    @RequestMapping("/")
    public String helloWorld() {
       return "Hello World!";
    }
    
-   @PreAuthorize("hasRole('Group1')")
-   @RequestMapping("/Group1")
+   @PreAuthorize("hasRole('Leo')")
+   @RequestMapping("/leo")
    public String groupOne() {
       return "Hello Group 1 Users!";
    }
