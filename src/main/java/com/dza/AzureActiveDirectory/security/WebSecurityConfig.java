@@ -15,15 +15,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Autowired
     private OAuth2UserService <OidcUserRequest, OidcUser> oidcUserService;
+    
+    @Autowired
+    private CustomizeAuthenticationSuccessHandler mySuccessHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-            .anyRequest().authenticated()
+            //.anyRequest().authenticated()
+            .antMatchers("/ll").authenticated()
+            .antMatchers("/leo").hasRole("USER")
             .and()
             .oauth2Login()
             .userInfoEndpoint()
             .oidcUserService(oidcUserService);
+            // .successHandler(mySuccessHandler) ;
     }
 }
