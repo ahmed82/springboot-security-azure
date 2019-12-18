@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +26,14 @@ public class HelloController {
    @RequestMapping("/leo")
    public String groupOne() {
 	   List<GrantedAuthority> authorities2  = new ArrayList<>();
-		  authorities2.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		  authorities2.add(new SimpleGrantedAuthority("ROLE_LEOADMIN"));
       return "Hello Leo Users!";
    }
    @PreAuthorize("hasRole('USER')")
    @RequestMapping("/u")
    public String groupTwo() {
+	   
+	   System.out.println("88888888888888888888 "+SecurityContextHolder.getContext().getAuthentication());
       return "Hello Group 2 Users!";
    }
    @Autowired

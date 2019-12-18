@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             //.anyRequest().authenticated()
             .antMatchers("/ll").authenticated()
-            .antMatchers("/leo").hasRole("USER")
+            .antMatchers("/leo").hasRole("LEOADMIN")
             .and()
             .oauth2Login()
             .userInfoEndpoint()
